@@ -15,6 +15,9 @@ var app = new Vue (
         },
 
         methods: {
+            addItem() {
+                this.items.push(this.newItem);
+            }
 
         },
 
