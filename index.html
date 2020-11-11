@@ -17,19 +17,19 @@
 <!-- creo un v-if v-else per cambiare il valore al button e richiamare le relative funzioni di modifica e successiva aggiunta alla lista -->
                 <div v-if="!isModificate">
                     <input id="input" type="text" v-model="item">
-                    <button @click="addItem" type="button" name="button"> Aggiungi alla lista</button>
+                    <button @click="addItem" type="button" name="button" class="btn btnadd"> Aggiungi alla lista</button>
                 </div>
                 <div v-else>
                     <input id="input" type="text" v-model="item">
-                    <button @click="modificItem" type="button" name="button"> Aggiungi modifica</button>
+                    <button @click="modificItem" type="button" name="button" class="btn btnadd"> Aggiungi modifica</button>
                 </div>
 
 <!-- lista ordinata. scorro l'array. Ogni item ha il relativo pulsante per la modifica e cancellazione -->
                 <ol>
                     <li
                         v-for="(item, index) in items"> {{ item }}
-                        <button @click="editItem(index, item)" type="button" name="button">Modifica</button>
-                        <button @click="removeItem(index)" type="button" name="button">Cancella</button>
+                        <button @click="editItem(index, item)" type="button" name="button" class="btn modify">Modifica</button>
+                        <button @click="removeItem(index)" type="button" name="button" class="btn delete">Cancella</button>
                     </li>
                 </ol>
             </div>
