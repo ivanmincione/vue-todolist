@@ -11,19 +11,38 @@ var app = new Vue (
         el: '#root',
         data: {
             items: ['latte', 'pane', 'carne', 'pasta', 'acqua', 'verdura'],
-            newItem: '',
+            item: '',
+            isModificate: false,
+            selectIndex: null,
+
         },
 
         methods: {
+            // aggiungo gli item all'array
             addItem() {
-                this.items.push(this.newItem);
-            }
+                this.items.push(this.item);
+                this.item = '';
+            },
+
+            // funzione per selezionare un item da modificare
+            editItem(index, item) {
+                this.item = item ;
+                this.selectIndex = index;
+                this.isModificate = true;
+            },
+
+            // funzione per aggiungere alla lista l'item MODIFICATO
+            modificItem() {
+                this.items.splice(this.selectIndex, 1, this.item)
+                this.isModificate = false
+            },
+
+            // funzione per rimuovere un item cliccando sul button
+            removeItem (index) {
+                this.items.splice( index, 1 );
+            },
 
         },
-
-
-
-
 
 
 

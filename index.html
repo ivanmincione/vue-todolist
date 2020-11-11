@@ -2,24 +2,37 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <!-- FONTAWESOME -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-        <!-- VUE.JS -->
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <!-- STYLE -->
         <link rel="stylesheet" href="style.css">
+        <!-- VUE.JS -->
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <title>TODO LIST</title>
     </head>
     <body>
 
         <div id="root">
+            <div class="container">
+                <h1> Todo List</h1>
 
-            <input id="input" type="text" v-model="newItem">
-            <button @click="addItem" type="button" name="button"> Aggiungi alla lista</button>
+<!-- creo un v-if v-else per cambiare il valore al button e richiamare le relative funzioni di modifica e successiva aggiunta alla lista -->
+                <div v-if="!isModificate">
+                    <input id="input" type="text" v-model="item">
+                    <button @click="addItem" type="button" name="button"> Aggiungi alla lista</button>
+                </div>
+                <div v-else>
+                    <input id="input" type="text" v-model="item">
+                    <button @click="modificItem" type="button" name="button"> Aggiungi modifica</button>
+                </div>
 
-            <ul>
-                <li v-for=" item in items"> {{ item }} </li>
-            </ul>
+<!-- lista ordinata. scorro l'array. Ogni item ha il relativo pulsante per la modifica e cancellazione -->
+                <ol>
+                    <li
+                        v-for="(item, index) in items"> {{ item }}
+                        <button @click="editItem(index, item)" type="button" name="button">Modifica</button>
+                        <button @click="removeItem(index)" type="button" name="button">Cancella</button>
+                    </li>
+                </ol>
+            </div>
 
         </div>
 
