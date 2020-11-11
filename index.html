@@ -16,8 +16,8 @@
 
 <!-- creo un v-if v-else per cambiare il valore al button e richiamare le relative funzioni di modifica e successiva aggiunta alla lista -->
                 <div v-if="!isModificate">
-                    <input id="input" type="text" v-model="item">
-                    <button @click="addItem" type="button" name="button" class="btn btnadd"> Aggiungi alla lista</button>
+                    <input id="input" type="text" v-model="item" @keyup.enter="addItem" placeholder="Aggiungi alla lista">
+                    <button @click="addItem"  type="button" name="button" class="btn btnadd"> Aggiungi alla lista</button>
                 </div>
                 <div v-else>
                     <input id="input" type="text" v-model="item">
