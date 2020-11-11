@@ -10,7 +10,7 @@ var app = new Vue (
     {
         el: '#root',
         data: {
-            items: ['latte', 'pane', 'carne', 'pasta', 'acqua', 'verdura'],
+            items: ['latte', 'pane', 'carne', 'pasta', 'acqua',],
             item: '',
             isModificate: false,
             selectIndex: null,
@@ -32,6 +32,7 @@ var app = new Vue (
             },
 
             // funzione per aggiungere alla lista l'item MODIFICATO
+            //utilizzo la funzione splice passandogli i parametri restituisce l'elemento
             modificItem() {
                 this.items.splice(this.selectIndex, 1, this.item)
                 this.isModificate = false
